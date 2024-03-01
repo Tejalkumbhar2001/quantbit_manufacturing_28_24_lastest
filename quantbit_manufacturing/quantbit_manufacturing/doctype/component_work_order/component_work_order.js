@@ -92,6 +92,9 @@ frappe.ui.form.on('Component Work Order', {
 
 frappe.ui.form.on('Component Work Order', {
 	company: function(frm) {
+		frm.refresh_field('source_warehouse');
+		frm.refresh_field('target_warehouse');
+
 		frm.call({
 			method:'get_default_warehouse',
 			doc:frm.doc
