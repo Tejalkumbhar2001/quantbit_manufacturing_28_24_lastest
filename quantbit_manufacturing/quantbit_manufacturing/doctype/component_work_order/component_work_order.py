@@ -148,7 +148,7 @@ class ComponentWorkOrder(Document):
 
 	# To Set Default Warehouse from Foundry Setting
 	@frappe.whitelist()
-	def get_default_warehouse(self,d):
+	def get_default_warehouse(self):
 		warehouse = frappe.get_value('Foundry Setting',{'name': self.company}, "name")
 		if warehouse:
 			doc = frappe.get_doc('Foundry Setting', warehouse)
