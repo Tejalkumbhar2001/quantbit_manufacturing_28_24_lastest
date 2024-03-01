@@ -196,6 +196,8 @@ frappe.ui.form.on('Component Work Order', {
     },
 });
 
+///hiiiiiiiiiiiiii me kutri
+
 
 
 // frm.set_query("item_code", "finished_item_details", function (doc, cdt, cdn) {
