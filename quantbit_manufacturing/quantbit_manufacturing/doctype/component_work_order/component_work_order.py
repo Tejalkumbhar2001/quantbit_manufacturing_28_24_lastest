@@ -145,6 +145,18 @@ class ComponentWorkOrder(Document):
 			i.used_quantity = (i.percentage_input * total) / 100
 
 
+
+	# To Set Default Warehouse from Foundry Setting
+	@frappe.whitelist()
+	def get_default_warehouse(self,d):
+		warehouse = frappe.get_value('Foundry Setting',{'name': self.company}, "name")
+		if warehouse:
+			doc = frappe.get_doc('Foundry Setting', warehouse)
+			self.source_warehouse = doc.default_source_warehouse
+			self.target_warehouse = doc.default_target_warehouse
+		
+
+
 	def on_submit(self):
 		self.Manufacturing_stock_entry()
 		self.mi_stock_entry_scrap_details()

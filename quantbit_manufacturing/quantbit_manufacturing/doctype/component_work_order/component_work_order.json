@@ -30,6 +30,8 @@
   "machine_name",
   "column_break_0ytpu",
   "core_type",
+  "column_break_tk7o8",
+  "core_name",
   "section_break_oapg3",
   "power_reading_initial",
   "column_break_s757m",
@@ -77,7 +79,6 @@
    "fieldtype": "Link",
    "label": "Company",
    "options": "Company",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -360,6 +361,7 @@
    "label": "Power Reading Details"
   },
   {
+   "fetch_from": "machine_code.core_type",
    "fieldname": "core_type",
    "fieldtype": "Link",
    "label": "Core Type",
@@ -421,6 +423,16 @@
    "fieldtype": "Link",
    "label": "Finished Item Group",
    "options": "Item Group"
+  },
+  {
+   "fieldname": "column_break_tk7o8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "machine_code.core_name",
+   "fieldname": "core_name",
+   "fieldtype": "Data",
+   "label": "Core Name"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -431,7 +443,7 @@
    "link_fieldname": "custom_component_work_order"
   }
  ],
- "modified": "2024-02-28 14:47:47.744411",
+ "modified": "2024-03-01 15:43:18.572161",
  "modified_by": "Administrator",
  "module": "Quantbit Manufacturing",
  "name": "Component Work Order",

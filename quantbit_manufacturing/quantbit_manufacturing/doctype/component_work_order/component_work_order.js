@@ -89,6 +89,17 @@ frappe.ui.form.on('Component Work Order', {
 	}
 });
 
+
+frappe.ui.form.on('Component Work Order', {
+	company: function(frm) {
+		frm.call({
+			method:'get_default_warehouse',
+			doc:frm.doc
+		})
+	}
+});
+
+
 //  filter designation list for operator
 frappe.ui.form.on("Component Work Order", {
 	setup: function(frm) {
@@ -196,7 +207,7 @@ frappe.ui.form.on('Component Work Order', {
     },
 });
 
-///hiiiiiiiiiiiiii me kutri
+
 
 
 

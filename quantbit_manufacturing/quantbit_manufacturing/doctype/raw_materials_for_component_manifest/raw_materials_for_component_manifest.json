@@ -11,16 +11,17 @@
   "column_break_8hrfv",
   "item_name",
   "section_break_uzlyj",
-  "quantity",
   "column_break_jd0bv",
-  "uom",
+  "percentage_input",
+  "quantity",
+  "check",
   "section_break_pkfgp",
   "total",
-  "percentage_input",
-  "check"
+  "uom"
  ],
  "fields": [
   {
+   "columns": 2,
    "fieldname": "item_code",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -29,6 +30,7 @@
    "reqd": 1
   },
   {
+   "columns": 2,
    "fetch_from": "item_code.item_name",
    "fieldname": "item_name",
    "fieldtype": "Data",
@@ -38,6 +40,7 @@
   },
   {
    "allow_on_submit": 1,
+   "columns": 2,
    "fieldname": "quantity",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -78,6 +81,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "columns": 2,
    "fieldname": "percentage_input",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -85,6 +89,7 @@
    "precision": "2"
   },
   {
+   "columns": 2,
    "default": "0",
    "fieldname": "check",
    "fieldtype": "Check",
@@ -95,7 +100,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-02-05 15:35:37.098357",
+ "modified": "2024-03-01 15:29:36.007790",
  "modified_by": "Administrator",
  "module": "Quantbit Manufacturing",
  "name": "Raw Materials for Component Manifest",
