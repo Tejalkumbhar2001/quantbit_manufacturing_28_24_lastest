@@ -297,6 +297,7 @@
    "fieldtype": "Link",
    "label": "Operator ID",
    "options": "Employee",
+   "remember_last_selected_value": 1,
    "reqd": 1
   },
   {
@@ -304,6 +305,7 @@
    "fieldtype": "Link",
    "label": "Supervisor ID",
    "options": "Employee",
+   "remember_last_selected_value": 1,
    "reqd": 1
   },
   {
@@ -443,7 +445,7 @@
    "link_fieldname": "custom_component_work_order"
   }
  ],
- "modified": "2024-03-01 15:43:18.572161",
+ "modified": "2024-03-02 10:35:51.347395",
  "modified_by": "Administrator",
  "module": "Quantbit Manufacturing",
  "name": "Component Work Order",

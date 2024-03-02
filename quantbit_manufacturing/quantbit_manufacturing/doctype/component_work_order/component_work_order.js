@@ -92,6 +92,7 @@ frappe.ui.form.on('Component Work Order', {
 
 frappe.ui.form.on('Component Work Order', {
 	company: function(frm) {
+		
 		frm.refresh_field('source_warehouse');
 		frm.refresh_field('target_warehouse');
 
@@ -101,6 +102,19 @@ frappe.ui.form.on('Component Work Order', {
 		})
 	}
 });
+
+// frappe.ui.form.on('Component Work Order', {
+// 	refresh: function(frm) {
+		
+// 		frm.refresh_field('source_warehouse');
+// 		frm.refresh_field('target_warehouse');
+
+// 		frm.call({
+// 			method:'get_default_warehouse',
+// 			doc:frm.doc
+// 		})
+// 	}
+// });
 
 
 //  filter designation list for operator
@@ -211,74 +225,15 @@ frappe.ui.form.on('Component Work Order', {
 });
 
 
-
-
-
-// frm.set_query("item_code", "finished_item_details", function (doc, cdt, cdn) {
-// 	let d = locals[cdt][cdn];
-// 	if (frm.doc.finished_item_group) {
-// 		return {
-// 			filters: [
-// 				['Item', 'item_group', '=', frm.doc.finished_item_group],
-// 			]
-// 		};
-// 	} else {
-	   
-// 		return {};
-// 	}
-// });
-// frm.set_query("finished_item_code", "items_outsourcing_job_work", function (doc, cdt, cdn) {
-// 	let d = locals[cdt][cdn];
-// 	return {
-// 		filters: [
-// 			["Item", company_field, '=', frm.doc.company],
-// 		]
-// 	};
-// });
-
-
-// frappe.ui.form.on('Finished Item Details', {
-//     item_group: function(frm, cdt, cdn) {
-//         var child = locals[cdt][cdn];
-//         var itemCodeField = frappe.meta.get_docfield('Finished Item Details', 'item_code', frm.doc.name);
-        
-//         itemCodeField.get_query = function() {
-//             return {
-//                 filters: {
-
-//                 }
-//             };
-//         };
-//         if (child.item_group) {
-//             itemCodeField.get_query = function() {
-//                 return {
-//                     filters: {
-//                         'item_group': child.item_group
-//                     }
-//                 };
-//             };
-//         }
-//     },
-// });
-
-// frappe.ui.form.on('Component Work Order', {
-//     // Add any event handlers or validation for the parent form if needed
-// });
-
-// frappe.ui.form.on('Finished Item Details', {
-//     item_group: function(frm, cdt, cdn) {
-//         var child = locals[cdt][cdn];
-//         frappe.meta.get_docfield('Finished Item Details', 'item_code', frm.doc.name).get_query = function() {
-//             return {
-//                 filters: {
-//                     'item_group': child.item_group
-//                 }
-//             };
-//         };
-//     }
-// });
-
-
+frappe.ui.form.on('Component Raw Item', {
+	check: function(frm) {
+		frm.call({
+			method:'get_quantity_compo',
+			doc:frm.doc
+		})
+		frm.refresh_field("component_raw_item")
+	}
+});
 
 
 frappe.ui.form.on('Scrap Details', {

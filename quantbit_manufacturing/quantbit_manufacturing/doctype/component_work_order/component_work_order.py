@@ -19,7 +19,8 @@ class ComponentWorkOrder(Document):
 			doc_name = frappe.get_value('Component Manifest',{'finished_item_code': self.finished_item_code, "enable": True}, "name")
 			if doc_name:
 				doc = frappe.get_doc('Component Manifest', doc_name)
-				self.finished_item_group = doc.finished_item_group
+				
+				self.finished_item_group = doc.finished_item_group				
 				self.append('finished_item_details',{
 					'item_code':doc.finished_item_code,
 					'item_name':doc.finished_item_name,
@@ -36,6 +37,12 @@ class ComponentWorkOrder(Document):
 						"check":d.check,
 						"total": d.total,
 					})
+					
+				self.get_default_warehouse()
+				self.set_source_warehouse()
+				self.available_qty()
+
+								
 			else:
 				frappe.throw(("Component Manifest not found for item code {0}").format(self.finished_item_code))
 
@@ -63,11 +70,14 @@ class ComponentWorkOrder(Document):
 						'used_quantity': getval(i.updatedqty) * d.quantity,
 						'quantity' : gatevalue(i.updatedqty) * d.quantity
 
-
+		
 
 					})
 			if i.item_code and not doc_name:
 				frappe.throw("Component Manifest not found for item code")
+
+		self.set_source_warehouse()
+		self.available_qty()
 
 
 	# Calculate Available Quantity in source warehouse In Component Raw Item			
@@ -138,12 +148,18 @@ class ComponentWorkOrder(Document):
 	
 	# get scrap quantity based on percentage input and checked component raw item 
 	@frappe.whitelist()
-	def get_quantity_per(self,d):
+	def get_quantity_per(self):
 		total = sum(i.used_quantity for i in self.get('component_raw_item') if i.check)
 		percentage_items = [i for i in self.get('scrap_items') if i.percentage_input]
 		for i in percentage_items:
 			i.used_quantity = (i.percentage_input * total) / 100
 
+	@frappe.whitelist()
+	def get_quantity_compo(self):
+		total = sum(i.quantity for i in self.get('component_raw_item') if i.check)
+		percentage_items = [i for i in self.get('component_raw_item') if i.percentage_input]
+		for i in percentage_items:
+			i.used_quantity = (i.percentage_input * total) / 100
 
 
 	# To Set Default Warehouse from Foundry Setting
