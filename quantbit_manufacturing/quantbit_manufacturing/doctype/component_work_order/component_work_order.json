@@ -266,13 +266,13 @@
    "options": "Additional Cost for Work Order"
   },
   {
-   "fetch_from": "supervisor.employee_name",
+   "fetch_from": "supervisor.supervisor_name",
    "fieldname": "supervisor_name",
    "fieldtype": "Data",
    "label": "Supervisor Name"
   },
   {
-   "fetch_from": "operator.employee_name",
+   "fetch_from": "operator.operator_name",
    "fieldname": "operator_name",
    "fieldtype": "Data",
    "label": "Operator Name"
@@ -296,7 +296,7 @@
    "fieldname": "operator",
    "fieldtype": "Link",
    "label": "Operator ID",
-   "options": "Employee",
+   "options": "Operator Master",
    "remember_last_selected_value": 1,
    "reqd": 1
   },
@@ -304,7 +304,7 @@
    "fieldname": "supervisor",
    "fieldtype": "Link",
    "label": "Supervisor ID",
-   "options": "Employee",
+   "options": "Supervisor Master",
    "remember_last_selected_value": 1,
    "reqd": 1
   },
@@ -445,7 +445,7 @@
    "link_fieldname": "custom_component_work_order"
   }
  ],
- "modified": "2024-03-02 10:35:51.347395",
+ "modified": "2024-03-02 18:25:30.222862",
  "modified_by": "Administrator",
  "module": "Quantbit Manufacturing",
  "name": "Component Work Order",

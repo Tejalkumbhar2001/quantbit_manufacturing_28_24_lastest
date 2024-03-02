@@ -103,50 +103,6 @@ frappe.ui.form.on('Component Work Order', {
 	}
 });
 
-// frappe.ui.form.on('Component Work Order', {
-// 	refresh: function(frm) {
-		
-// 		frm.refresh_field('source_warehouse');
-// 		frm.refresh_field('target_warehouse');
-
-// 		frm.call({
-// 			method:'get_default_warehouse',
-// 			doc:frm.doc
-// 		})
-// 	}
-// });
-
-
-//  filter designation list for operator
-frappe.ui.form.on("Component Work Order", {
-	setup: function(frm) {
-			frm.set_query("operator", function() { // Replace with the name of the link field
-				return {
-					filters: [
-						["Employee", "company", '=', frm.doc.company],// Replace with your actual filter criteria
-						["Employee", "designation", '=', 'Operator'],
-					]
-				};
-			});
-
-		}
-});
-
-//  filter designation list for supervisor	
-frappe.ui.form.on("Component Work Order", {
-	setup: function(frm) {
-			frm.set_query("supervisor", function() { // Replace with the name of the link field
-				return {
-					filters: [
-						["Employee", "company", '=', frm.doc.company],// Replace with your actual filter criteria
-						["Employee", "designation", '=', 'Supervisor'],
-					]
-				};
-			});
-
-		}
-});
-
 
 //  filter warehouse based on company
 frappe.ui.form.on("Component Work Order", {
