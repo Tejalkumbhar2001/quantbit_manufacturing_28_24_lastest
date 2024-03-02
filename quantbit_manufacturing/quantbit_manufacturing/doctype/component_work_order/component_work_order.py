@@ -72,9 +72,9 @@ class ComponentWorkOrder(Document):
 
 					})
 
-			self.set_source_warehouse()
-			self.available_qty()
-			
+				self.set_source_warehouse()
+				self.available_qty()
+
 			if i.item_code and not doc_name:
 				frappe.throw("Component Manifest not found for item code")
 
