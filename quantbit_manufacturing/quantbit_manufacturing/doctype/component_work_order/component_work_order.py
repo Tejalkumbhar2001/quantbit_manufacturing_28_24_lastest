@@ -70,14 +70,15 @@ class ComponentWorkOrder(Document):
 						'used_quantity': getval(i.updatedqty) * d.quantity,
 						'quantity' : gatevalue(i.updatedqty) * d.quantity
 
-		
-
 					})
+
+			self.set_source_warehouse()
+			self.available_qty()
+			
 			if i.item_code and not doc_name:
 				frappe.throw("Component Manifest not found for item code")
 
-		self.set_source_warehouse()
-		self.available_qty()
+		
 
 
 	# Calculate Available Quantity in source warehouse In Component Raw Item			
