@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "field:finished_item_code",
  "creation": "2024-01-24 15:39:28.740304",
  "default_view": "List",
  "doctype": "DocType",
@@ -24,6 +24,10 @@
   "finished_item_name",
   "column_break_nn9zn",
   "quantity_to_manufacturing",
+  "select_core_type_section",
+  "core_type",
+  "column_break_derhh",
+  "core_name",
   "core_manufacturing_section",
   "core_manufacturing",
   "raw_materials_section",
@@ -85,10 +89,10 @@
   {
    "fieldname": "finished_item_code",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Finished Item Code(BOM)",
    "options": "Item",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "column_break_t1pxc",
@@ -98,9 +102,9 @@
    "fetch_from": "finished_item_code.item_name",
    "fieldname": "finished_item_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Finished Item Name",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "core_manufacturing_section",
@@ -197,26 +201,44 @@
   {
    "fieldname": "column_break_pjf2q",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "select_core_type_section",
+   "fieldtype": "Section Break",
+   "label": "Select Core Type"
+  },
+  {
+   "fieldname": "core_type",
+   "fieldtype": "Link",
+   "label": "Core Type",
+   "options": "Core Type"
+  },
+  {
+   "fieldname": "column_break_derhh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "core_type.core_type",
+   "fieldname": "core_name",
+   "fieldtype": "Data",
+   "label": "Core Name"
   }
  ],
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [
   {
    "link_doctype": "Component Work Order",
    "link_fieldname": "component_manifest"
   }
  ],
- "modified": "2024-03-01 15:26:33.275050",
+ "modified": "2024-03-11 12:58:04.516668",
  "modified_by": "Administrator",
  "module": "Quantbit Manufacturing",
  "name": "Component Manifest",
- "naming_rule": "By \"Naming Series\" field",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
-   "amend": 1,
-   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -226,11 +248,11 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "submit": 1,
    "write": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

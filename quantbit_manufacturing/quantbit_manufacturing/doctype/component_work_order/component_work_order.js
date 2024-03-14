@@ -36,29 +36,6 @@ frappe.ui.form.on('Component Work Order', {
 	}
 });
 
-// setting value of updated quantity based on ok quantity 
-frappe.ui.form.on('Finished Item Details', {
-	okqty: function(frm) {
-		frm.refresh_field('updated_quantity_to_manufacturing');
-		frm.call({
-			method:'calculate_Uquantity',
-			doc:frm.doc
-		})
-	}
-});
-
-// setting value of updated quantity based on rejected_quantity
-frappe.ui.form.on('Finished Item Details', {
-	rejqty: function(frm) {
-		frm.refresh_field('updated_quantity_to_manufacturing');
-		frm.call({
-			method:'calculate_Uquantity',
-			doc:frm.doc
-		})
-	}
-});
-
-
 //  setting source warehouse in Component Raw Item child table after selected source warehouse field
 frappe.ui.form.on('Component Work Order', {
 	source_warehouse: function(frm) {
@@ -167,10 +144,11 @@ frappe.ui.form.on('Component Work Order', {
 		
 			frm.set_query("item_code", "finished_item_details", function(doc, cdt, cdn) {
 				let d = locals[cdt][cdn];
-				if(frm.doc.finished_item_group){
+				if(frm.doc.finished_item_group && frm.doc.core_type){
 					return {
 						filters: {
 							'item_group': frm.doc.finished_item_group,
+							'custom_core_type':frm.doc.core_type,
 						}
 					};
 				}
@@ -240,6 +218,18 @@ frappe.ui.form.on('Component Work Order', {
 	}
 });
 
+// ================================================================================== Finished Item Details ================================================================================== 
+
+frappe.ui.form.on("Finished Item Details", {
+    finished_item_details_remove: function(frm, cdt, cdn) {
+        frm.clear_table("component_raw_item");
+		frm.refresh_field('component_raw_item');
+		frm.call({
+			method:'get_manifest_raw_mate',
+			doc:frm.doc
+		})
+    }
+});
 
 frappe.ui.form.on('Finished Item Details', {
 	item_code: function(frm) {
@@ -252,14 +242,25 @@ frappe.ui.form.on('Finished Item Details', {
 	}
 });
 
-
-frappe.ui.form.on("Finished Item Details", {
-    finished_item_details_remove: function(frm, cdt, cdn) {
-        frm.clear_table("component_raw_item");
-		frm.refresh_field('component_raw_item');
+// setting value of updated quantity based on ok quantity 
+frappe.ui.form.on('Finished Item Details', {
+	okqty: function(frm) {
+		frm.refresh_field('updated_quantity_to_manufacturing');
 		frm.call({
-			method:'get_manifest_raw_mate',
+			method:'calculate_Uquantity',
 			doc:frm.doc
 		})
-    }
+	}
 });
+
+// setting value of updated quantity based on rejected_quantity
+frappe.ui.form.on('Finished Item Details', {
+	rejqty: function(frm) {
+		frm.refresh_field('updated_quantity_to_manufacturing');
+		frm.call({
+			method:'calculate_Uquantity',
+			doc:frm.doc
+		})
+	}
+});
+

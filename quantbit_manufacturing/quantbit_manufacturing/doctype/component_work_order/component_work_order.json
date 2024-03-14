@@ -41,22 +41,28 @@
   "section_break_ujtiw",
   "finished_item_group",
   "finished_item_code",
-  "column_break_t1pxc",
   "finished_item_name",
-  "column_break_rht6h",
   "quantity_to_manufacturing",
-  "column_break_jwgah",
-  "updated_quantity_to_manufacturing",
   "column_break_nlrgo",
+  "finished_item_details",
+  "section_break_10ovl",
+  "column_break_rht6h",
+  "column_break_jwgah",
+  "column_break_t1pxc",
+  "column_break_jw4g9",
   "ok_quantity",
   "column_break_vfpkv",
   "rejected_quantity",
+  "column_break_zw893",
+  "updated_quantity_to_manufacturing",
   "section_break_v9ujx",
-  "finished_item_details",
   "warehouse_details_section",
   "source_warehouse",
   "column_break_09srv",
   "target_warehouse",
+  "component_raw_material_details_section",
+  "get_data",
+  "component_raw_material_details",
   "component_raw_item_section",
   "component_raw_item",
   "raw_materials_section",
@@ -226,7 +232,7 @@
   },
   {
    "fieldname": "updated_quantity_to_manufacturing",
-   "fieldtype": "Float",
+   "fieldtype": "Int",
    "hidden": 1,
    "label": "Updated Quantity to Manufacturing",
    "precision": "2"
@@ -435,6 +441,34 @@
    "fieldname": "core_name",
    "fieldtype": "Data",
    "label": "Core Name"
+  },
+  {
+   "fieldname": "section_break_10ovl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_jw4g9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_zw893",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "component_raw_material_details_section",
+   "fieldtype": "Section Break",
+   "label": "Component raw material details"
+  },
+  {
+   "fieldname": "component_raw_material_details",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "options": "Component raw material details"
+  },
+  {
+   "fieldname": "get_data",
+   "fieldtype": "Button",
+   "label": "Get Data"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -445,7 +479,7 @@
    "link_fieldname": "custom_component_work_order"
   }
  ],
- "modified": "2024-03-02 18:25:30.222862",
+ "modified": "2024-03-09 13:50:53.392711",
  "modified_by": "Administrator",
  "module": "Quantbit Manufacturing",
  "name": "Component Work Order",

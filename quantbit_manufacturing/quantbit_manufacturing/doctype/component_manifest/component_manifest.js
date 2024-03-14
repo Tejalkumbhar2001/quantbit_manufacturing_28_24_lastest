@@ -52,3 +52,22 @@ frappe.ui.form.on('Component Manifest', {
         });
     },
 });
+
+
+frappe.ui.form.on('Component Manifest', {
+	setup: function(frm) {
+		
+			frm.set_query("item_code", "raw_materials", function(doc, cdt, cdn) {
+				let d = locals[cdt][cdn];
+				if(frm.doc.core_type){
+					return {
+						filters: {
+							'custom_core_type':frm.doc.core_type,
+						}
+					};
+				}
+						
+			})
+	
+    },
+});
