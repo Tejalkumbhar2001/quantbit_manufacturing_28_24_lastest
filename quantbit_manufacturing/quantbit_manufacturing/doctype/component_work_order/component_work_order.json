@@ -440,6 +440,7 @@
    "fetch_from": "machine_code.core_name",
    "fieldname": "core_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Core Name"
   },
   {
@@ -479,7 +480,7 @@
    "link_fieldname": "custom_component_work_order"
   }
  ],
- "modified": "2024-03-09 13:50:53.392711",
+ "modified": "2024-03-18 11:06:03.082783",
  "modified_by": "Administrator",
  "module": "Quantbit Manufacturing",
  "name": "Component Work Order",

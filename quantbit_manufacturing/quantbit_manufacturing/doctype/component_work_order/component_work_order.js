@@ -144,11 +144,11 @@ frappe.ui.form.on('Component Work Order', {
 		
 			frm.set_query("item_code", "finished_item_details", function(doc, cdt, cdn) {
 				let d = locals[cdt][cdn];
-				if(frm.doc.finished_item_group && frm.doc.core_type){
+				if(frm.doc.finished_item_group){
 					return {
 						filters: {
 							'item_group': frm.doc.finished_item_group,
-							'custom_core_type':frm.doc.core_type,
+							// 'custom_core_type':frm.doc.core_type,
 						}
 					};
 				}

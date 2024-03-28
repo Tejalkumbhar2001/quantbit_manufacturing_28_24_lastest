@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "naming_series:machine_name",
  "creation": "2024-02-12 11:34:23.731511",
  "default_view": "List",
  "doctype": "DocType",
@@ -11,6 +11,7 @@
   "naming_series",
   "column_break_czgap",
   "company",
+  "abbreviation",
   "section_break_7jxoy",
   "machine_type",
   "column_break_f2umz",
@@ -75,11 +76,17 @@
    "fieldname": "core_name",
    "fieldtype": "Data",
    "label": "Core Name"
+  },
+  {
+   "fetch_from": "company.abbr",
+   "fieldname": "abbreviation",
+   "fieldtype": "Data",
+   "label": "Abbreviation"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-01 15:45:07.887715",
+ "modified": "2024-03-18 11:28:40.834865",
  "modified_by": "Administrator",
  "module": "Quantbit Manufacturing",
  "name": "Core Manufacturing Machine",
@@ -95,6 +102,7 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
    "share": 1,
    "write": 1
   }
